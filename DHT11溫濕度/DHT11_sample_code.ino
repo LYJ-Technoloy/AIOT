@@ -1,29 +1,28 @@
-#include "DHT.h"
+#include "DHT.h" //Use DHT.h function library
 
-#define DHTPIN 5
-#define DHTTYPE DHT11
-DHT dht(DHTPIN, DHTTYPE);
+#define DHTPIN 5 //Define pin
+#define DHTTYPE DHT11 //Define sensor type
+DHT dht(DHTPIN, DHTTYPE); //Read DHT sensor content
 
-int t = 0;  // TEMPERATURE VAR
-int h = 0;  // HUMIDITY VAR
+float t = 0;//Data type is floating point
+float h = 0;//Data type is floating point
 
 void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
-  Serial.println("DHT11 sensor!");
-  dht.begin();
+  Serial.begin(9600); //Set baud
+  Serial.println("DHT11 sensor!");//After the print string wrap
+  dht.begin();//dht start
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  float h = dht.readHumidity();
-  float t = dht.readTemperature();
+  // put setup code here, to run repeatedly:
+  h = dht.readHumidity();//h is the value of dht.readHumidity
+  t = dht.readTemperature();//t is the value of dht.readTemperature
 
-  Serial.print("Humidity: ");
-  Serial.print(h);
-  Serial.print(" %\t");
-  Serial.print("Temperature: ");
-  Serial.print(t);
-  Serial.println(" *C ");
-  delay(1000);
+  Serial.print("Humidity: ");//Print out the string Humidlty:
+  Serial.print(h);//Print out the value of h
+  Serial.print(" %\t");//Print out the string %t, then wrap after
+  Serial.print("Temperature: ");//Print out the string Temperature:
+  Serial.print(t);//Print out the value of t
+  Serial.println(" *C ");//Print out the string *C, then wrap after
+  delay(1000);//Delay 1000ms (1 seconds) 
 }
